@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon" />
+  <title>CodeBot Dashboard</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="sidebar-collapsed sidebar-expanded">
+  <!-- Sidebar -->
+  <aside class="sidebar shadow-sm">
+    <div class="sidebar-header text-center d-flex justify-content-center align-items-center">
+      <img src="assets/img/Logo.png" alt="Logo" class="logo-img" />
+      <button id="sidebarToggle" class="btn">
+        <i class="fas fa-angle-right"></i>
+      </button>
+    </div>
+
+    <div class="sidebar-content">
+      <div class="sidebar-menu-section mt-4 px-3">
+        <div class="sidebar-menu-section-title text-uppercase">Menu</div>
+        <ul class="nav flex-column sidebar-menu mt-2 gap-1">
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center active gap-2 text-nowrap" href="/index.html">
+              <i class="fa-solid fa-house"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 text-nowrap" href="#">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Workspace</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-menu-section mt-3 px-3">
+        <div class="sidebar-menu-section-title text-uppercase">Others</div>
+        <ul class="nav flex-column sidebar-menu mt-2 gap-1">
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 text-nowrap" href="#">
+              <i class="fa-solid fa-user-tie"></i>
+              <span>Employee Central</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 text-nowrap" href="#">
+              <i class="fas fa-graduation-cap"></i>
+              <span>Talent & Learning</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 text-nowrap" href="#">
+              <i class="fa-solid fa-users"></i>
+              <span>Platform</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 text-nowrap" href="#">
+              <i class="fas fa-chart-pie"></i>
+              <span>Impact Analysis</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 text-nowrap" href="#">
+              <i class="fa-solid fa-copy"></i>
+              <span>Scramble / Clone</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 text-nowrap" href="#">
+              <i class="fas fa-robot"></i>
+              <span>Robotic</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2 text-nowrap" href="#">
+              <i class="fas fa-search"></i>
+              <span>Search Execution(s)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex justify-content-between align-items-center" href="#" id="othersToggle">
+              <div class="d-flex align-items-center gap-2">
+                <i class="fas fa-ellipsis-h"></i>
+                <span>Others</span>
+              </div>
+              <i class="fas fa-chevron-down text-muted small chevron-down" id="othersArrow"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-menu-section mt-4 px-4 mb-4">
+        <div class="sidebar-menu-section-title text-uppercase">
+          ADMINISTRATOR
+        </div>
+        <ul class="nav flex-column sidebar-menu mt-2 gap-1">
+          <!-- Admin toggle item -->
+          <li class="nav-item">
+            <a class="nav-link d-flex justify-content-between align-items-center" href="#" id="adminToggle">
+              <div class="d-flex align-items-center gap-2">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+              </div>
+              <i class="fas fa-chevron-down text-muted small chevron-down" id="adminArrow"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- navbar  -->
+
+<!-- Navbar -->
+  <header>
+    <nav class="top-navbar d-flex justify-content-between align-items-center px-4 py-2 shadow-sm">
+      <!-- Search bar -->
+      <div class="d-flex align-items-center gap-3 d-none d-md-inline">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search here..." />
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center gap-4">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="btn btn-outline-secondary rounded-circle p-2">
+          <i class="fas fa-moon"></i>
+        </button>
+
+        <!-- Language Dropdown -->
+        <div class="dropdown d-flex align-items-center language rounded-3 p-2">
+          <button class="btn dropdown-toggle language-btn d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="language-img rounded-circle me-2" src="https://flagcdn.com/w40/us.png" alt="US Flag" />
+            <span>Eng (US)</span>
+          </button>
+          <!-- ... Dropdown items unchanged ... -->
+        </div>
+
+        <!-- Notification -->
+        <div class="notification position-relative rounded">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notif-dot"></span>
+        </div>
+
+        <!-- Profile -->
+        <div class="profile d-flex gap-3">
+          <img src="assets/img/AlyBoghani.jpg" alt="Profile" class="profile-pic" />
+          <div class="d-flex flex-column align-items-start">
+            <span class="profile-name d-none d-lg-inline">Aly Boghani</span>
+            <small class="text-muted fs-7 d-none d-lg-inline">Admin</small>
+          </div>
+          <i class="fas fa-chevron-down small pt-1 d-none d-lg-inline"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- dashboard home content -->
+  <main class="dashboard px-3 py-3">
+    <div aria-label="breadcrumb" class="breadcrumb mb-2">
+      <ol class="breadcrumb d-flex align-items-center">
+        <li class="breadcrumb-item text-muted">Home</li>
+        <li class="breadcrumb-separator mx-2 text-muted">/</li>
+        <li class="breadcrumb-item active fw-semibold" aria-current="page">
+          Dashboard
+        </li>
+      </ol>
+    </div>
+
+    <!-- Account Usage Overview -->
+
+    <div class="row g-3">
+      <div class="col-lg-8 col-md-12">
+        <div class="account-overview p-4 rounded-3 shadow-sm flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-4">
+            <!-- heading -->
+
+            <div>
+              <h1 class="account-overview-title fw-bold fs-6 mb-2">
+                Account Usage Overview
+              </h1>
+              <p class="text-muted mb-0" style="font-size: 12px">
+                System metrics
+              </p>
+            </div>
+            <button class="export-btn btn d-flex align-items-center gap-2 border border-2">
+              <i class="fas fa-download"></i>
+              Export
+            </button>
+          </div>
+
+          <!-- System metrics cards -->
+
+          <div class="cards row g-2 flex-wrap">
+            <div class="col-md-3 col-sm-6">
+              <div class="card card-1 border-0 rounded-4 p-3">
+                <div class="mb-2 text-danger fs-4">
+                  <i class="fa-solid fa-user-group"></i>
+                </div>
+                <h4 class="fw-bold">8</h4>
+                <p class="mb-1 fw-semibold">Total User</p>
+                <small class="text-primary">Available User Unlimited</small>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+              <div class="card card-2 border-0 rounded-4 p-3">
+                <div class="mb-2 text-danger fs-4">
+                  <i class="fas fa-cogs"></i>
+                </div>
+                <h4 class="fw-bold">144</h4>
+                <p class="mb-1 fw-semibold">Execution This Month</p>
+                <small class="text-primary">Available Executions
+                  Unlimited</small>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+              <div class="card card-3 border-0 rounded-4 p-3">
+                <div class="mb-2 text-danger fs-4">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <h4 class="fw-bold">12hrs</h4>
+                <p class="mb-1 fw-semibold">Total Hours This Month</p>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+              <div class="card card-4 border-0 rounded-4 p-3">
+                <div class="mb-2 text-danger fs-4">
+                  <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h4 class="fw-bold">2025-12-31</h4>
+                <p class="mb-1 fw-semibold">Account Expiry Date</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employee Report card-->
+
+      <div class="col-lg-4 col-md-12">
+        <div class="employee-report p-4 rounded-3 shadow-sm flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+            <div>
+              <h1 class="employee-report-title fw-bold fs-6 mb-2">
+                Employee Report
+              </h1>
+              <p class="text-muted mb-0" style="font-size: 12px">
+                Metrics in Percentage (%)
+              </p>
+            </div>
+            <button class="export-btn btn border border-2">
+              View Report
+            </button>
+          </div>
+
+          <div class="employee-report-content d-flex flex-wrap justify-content-between">
+            <div class="employee-report-chart-section position-relative me-4">
+              <p class="text-muted small mb-1 fw-semibold">Time</p>
+              <p class="text-muted small mb-4">From 1-6 Jul, 2025</p>
+
+              <div class="position-relative d-flex justify-content-center align-items-center"
+                style="width: 80px; height: 80px">
+                <div class="rounded-circle" style="
+                      width: 100%;
+                      height: 100%;
+                      background: conic-gradient(
+                        #5a6acf 0% 36%,
+                        #8593ed 36% 70%,
+                        #c7ceff 70% 100%
+                      );
+                    "></div>
+                <div class="position-absolute bg-white rounded-circle d-flex justify-content-center align-items-center"
+                  style="width: 70%; height: 70%"></div>
+              </div>
+
+              <div class="employee-report-tooltip text-white rounded shadow">
+                <p class="mb-0 fw-bold small">Attendance Consistency</p>
+                <p class="mb-0 small">1pm - 4pm</p>
+                <h4 class="mb-0 fw-bold">36%</h4>
+              </div>
+            </div>
+
+            <div class="employee-report-legend">
+              <div class="d-flex flex-column align-items-start mb-2">
+                <div class="d-flex align-items-center gap-1">
+                  <i class="fa-solid fa-circle" style="color: #5a6acf; font-size: 8px"></i>
+                  <span class="small text-muted" style="font-size: 12px">Attendance</span>
+                </div>
+                <span class="small fw-semibold px-3" style="font-size: 12px">36%</span>
+              </div>
+
+              <div class="d-flex flex-column align-items-start mb-2">
+                <div class="d-flex align-items-center gap-1">
+                  <i class="fa-solid fa-circle" style="color: #8593ed; font-size: 8px"></i>
+                  <span class="small text-muted" style="font-size: 12px">Task
+                    Completion</span>
+                </div>
+                <span class="small fw-semibold px-3" style="font-size: 12px">34%</span>
+              </div>
+
+              <div class="d-flex flex-column align-items-start">
+                <div class="d-flex align-items-center gap-1">
+                  <i class="fa-solid fa-circle" style="color: #c7ceff; font-size: 8px"></i>
+                  <span class="small text-muted" style="font-size: 12px">Active Hours</span>
+                </div>
+                <span class="small fw-semibold px-3" style="font-size: 12px">30%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- feature buttons  -->
+
+    <div class="mt-4">
+      <div class="d-flex flex-wrap gap-2">
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-user-tie me-2"></i>
+          <span>Employee Central</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-users me-2"></i>
+          <span>Recruiting Management</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-coins me-2"></i>
+          <span>EC Payroll</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-hand-holding-usd me-2"></i>
+          <span>EC Payroll PTP</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-briefcase me-2"></i>
+          <span>Position Management</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-clipboard-check me-2"></i>
+          <span>Onboarding 2.0</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-user me-2"></i>
+          <span>Employee Profile</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-user-lock me-2"></i>
+          <span>Role Based Permission</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-robot me-2"></i>
+          <span>Robotic</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-list-alt me-2"></i>
+          <span>Picklist Management</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-language me-2"></i>
+          <span>Translations</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-file-import me-2"></i>
+          <span>Import / Export Data</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-boxes me-2"></i>
+          <span>Integration Center</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-users-cog me-2"></i>
+          <span>PM/GM</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-money-bill-wave me-2"></i>
+          <span>Compensation</span>
+        </button>
+
+        <button class="feature-btn d-flex align-items-center justify-content-start">
+          <i class="fas fa-cog me-2"></i>
+          <span>Configuration UI</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Employee Profile Card -->
+
+    <div class="row g-3 mt-2">
+      <div class="col-lg-4 col-md-12">
+        <div class="employee-profile-card p-4 rounded-3 shadow-sm h-100">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <h2 class="card-title fw-bold fs-6 mb-0">
+              Employee Profile ( Top 4 )
+            </h2>
+            <button class="employee-profile-view-all-btn btn border border-2 px-2 py-1">
+              View All
+            </button>
+          </div>
+
+          <div class="employee-profile-table">
+            <div class="row employee-profile-header py-2 text-muted small border-bottom d-flex justify-content-between"
+              style="color: #96a5b8">
+              <div class="col-1 text-start">#</div>
+              <div class="col-5 text-start">Name</div>
+              <div class="col-4 text-start">Popularity</div>
+              <div class="col-2 text-start">Sales</div>
+            </div>
+
+            <div class="row employee-profile-item py-2 align-items-center border-bottom">
+              <div class="col-1 text-muted small">0</div>
+              <div class="col-5 fw-semibold employee-item-name">
+                Home Decor
+              </div>
+              <div class="col-4">
+                <div class="progress employee-progress" style="background-color: #cde7ff">
+                  <div class="progress-bar" role="progressbar" style="width: 75%; background: linear-gradient(#0095ff)"
+                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="col-2 d-flex justify-content-center">
+                <span class="employee-sales-badge" style="
+                      background-color: #f0f9ff;
+                      border: 2px solid #0095ff;
+                      color: #0095ff;
+                    ">45</span>
+              </div>
+            </div>
+
+            <div class="row employee-profile-item py-2 align-items-center border-bottom">
+              <div class="col-1 text-muted small">0</div>
+              <div class="col-5 fw-semibold employee-item-name">
+                Disney Princess Pink Bag
+              </div>
+              <div class="col-4">
+                <div class="progress employee-progress" style="background-color: #8cfac7">
+                  <div class="progress-bar" role="progressbar" style="width: 60%; background: linear-gradient(#00e096)"
+                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="col-2 d-flex justify-content-center">
+                <span class="employee-sales-badge" style="
+                      background-color: #f0fdf4;
+                      border: 2px solid #00e58f;
+                      color: #00e58f;
+                    ">29</span>
+              </div>
+            </div>
+
+            <div class="row employee-profile-item py-2 align-items-center border-bottom">
+              <div class="col-1 text-muted small">0</div>
+              <div class="col-5 fw-semibold employee-item-name">Bathroom</div>
+              <div class="col-4">
+                <div class="progress employee-progress" style="background-color: #c5a8ff">
+                  <div class="progress-bar" role="progressbar" style="width: 45%; background: linear-gradient(#884dff)"
+                    aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="col-2 d-flex justify-content-center">
+                <span class="employee-sales-badge" style="
+                      background-color: #fbf1ff;
+                      border: 2px solid #884dff;
+                      color: #884dff;
+                    ">18</span>
+              </div>
+            </div>
+
+            <div class="row employee-profile-item py-2 align-items-center">
+              <div class="col-1 text-muted small">0</div>
+              <div class="col-5 fw-semibold employee-item-name">Apple</div>
+              <div class="col-4">
+                <div class="progress employee-progress" style="background-color: #ffd5a4">
+                  <div class="progress-bar" role="progressbar" style="width: 50%; background: linear-gradient(#ff8f0d)"
+                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="col-2 d-flex justify-content-center">
+                <span class="employee-sales-badge" style="
+                      background-color: #fef6e6;
+                      border: 2px solid #ff8900;
+                      color: #ff8900;
+                    ">25</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quality Score -->
+      <div class="col-lg-4 col-md-12">
+        <div class="quality-score-card p-4 rounded-3 shadow-sm h-100">
+          <h2 class="card-title fw-bold fs-6 mb-1">Quality Score</h2>
+          <p class="text-muted mb-3 small">
+            Performance breakdown by key factors
+          </p>
+
+          <div class="quality-circles-container position-relative">
+            <div class="quality-circle quality-circle-purple position-absolute">
+              <div class="quality-circle-inner text-center">
+                <span class="d-block fw-bold fs-5 text-white">85%</span>
+                <span class="d-block small text-white">Work<br />Discipline</span>
+              </div>
+            </div>
+
+            <div class="quality-circle quality-circle-orange position-absolute">
+              <div class="quality-circle-inner text-center">
+                <span class="d-block fw-bold fs-5 text-white">85%</span>
+                <span class="d-block small text-white">Task Quality</span>
+              </div>
+            </div>
+
+            <div class="quality-circle quality-circle-blue position-absolute">
+              <div class="quality-circle-inner text-center">
+                <span class="d-block fw-bold fs-5 text-white">92%</span>
+                <span class="d-block small text-white">Documentation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team working image-->
+      <div class="col-lg-4 col-md-12">
+        <div
+          class="illustration-card rounded-3 p-1 shadow-sm d-flex align-items-center justify-content-center h-100">
+          <img src="assets/img/pngtree-discussion-on-business-meeting.png" alt="Team working" />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
